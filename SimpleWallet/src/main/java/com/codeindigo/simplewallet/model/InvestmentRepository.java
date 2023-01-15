@@ -13,13 +13,26 @@ import java.util.ArrayList;
 public class InvestmentRepository {
 
     private ArrayList<Wallet> Wallets;
-
-    public InvestmentRepository() {
-        this.Wallets = new ArrayList();
+    private AssetRepository Assets;
+    
+    private void initAll() {
+        Asset cash = new Asset(Asset.TYPE.CASH, "PLN", null, "Gotówka");
+        this.Assets.addNewAsset(cash);
         Wallets.add(new Wallet("Akcje"));
         Wallets.add(new Wallet("Fundusze"));
         Wallets.add(new Wallet("Obligacje"));
         Wallets.add(new Wallet("Gotówka"));
+    }
+
+    public InvestmentRepository() {
+        this.Wallets = new ArrayList();
+        this.Assets = new AssetRepository();
+        
+        initAll();
+    }
+
+    public ArrayList<Wallet> getWallets() {
+        return Wallets;
     }
     
     

@@ -26,19 +26,13 @@ public class Wallet {
         return Assets;
     }
 
-    public void setAssets(ArrayList Assets) {
-        this.Assets = Assets;
+    public void addAsset(Asset item) {
+        this.Assets.add(item);
     }
     
-    public Wallet() {
-        Name = new String();
-        Assets = new ArrayList();
-    }
-
     public Wallet(String Name) {
         this.Name = Name;
-        Assets = new ArrayList();
+        this.Assets = new ArrayList();
     }
-    
-    
+       
 }

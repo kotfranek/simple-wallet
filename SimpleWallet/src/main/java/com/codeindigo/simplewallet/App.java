@@ -17,12 +17,18 @@ import javafx.stage.StageStyle;
 public class App extends Application {
 
     private static WindowManager s_winMgr;
-    private InvestmentRepository investment;
+    private static InvestmentRepository s_Investment;
 
     @Override
     public void start(Stage stage) throws IOException {
+        s_Investment = new InvestmentRepository();
+        
         s_winMgr = new WindowManager(stage);
         s_winMgr.show(WindowManager.WINDOW.MAIN);
+    }
+    
+    public static InvestmentRepository getInvestRepo() {
+        return s_Investment;
     }
     
     public static void showAbout()
