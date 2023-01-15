@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="2.5" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codeindigo.simplewallet.SecondaryController">
+   <children>
+      <HBox fillHeight="false" prefWidth="200.0">
+         <children>
+            <Label alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" text="Simple Wallet v." />
+            <Label fx:id="labelVersion" text="&lt;version&gt;" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true">
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin></TextArea>
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button fx:id="buttonOk" alignment="CENTER" mnemonicParsing="false" onAction="#closeDialog" text="OK" />
+        </items>
+      </ToolBar>
+   </children>
+</VBox>
