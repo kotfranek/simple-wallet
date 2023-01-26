@@ -23,6 +23,8 @@ public interface IAsset {
      * @return
      */
     public String getCurrency();
+    
+    public String getName();
 
     public TYPE getType();
 }

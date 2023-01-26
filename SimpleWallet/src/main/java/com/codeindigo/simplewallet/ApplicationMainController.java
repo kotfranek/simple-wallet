@@ -1,6 +1,8 @@
 package com.codeindigo.simplewallet;
 
+import com.codeindigo.simplewallet.model.Asset;
 import com.codeindigo.simplewallet.model.Wallet;
+import com.codeindigo.simplewallet.ui.IWindowManager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,8 +29,26 @@ public class ApplicationMainController  implements Initializable {
     }
     
     @FXML
+    private void showImportDialog() {
+        App.getWndM().show(IWindowManager.WINDOW.IMPORT);
+    }
+    
+    @FXML
     private void closeApp() {
         Platform.exit();
+    }
+    
+    private void populateWallet( TreeItem root, Wallet wallet ) {
+        ArrayList<Asset> assets = wallet.getAssets();
+        TreeItem tiWallet = new TreeItem(wallet.getName());
+        root.getChildren().add(tiWallet);
+
+        assets.forEach(
+                asset -> { 
+                    TreeItem tiAsset = new TreeItem(asset.getName());
+                    tiWallet.getChildren().add(tiAsset);
+                }
+        );        
     }
     
     /**
@@ -38,13 +58,11 @@ public class ApplicationMainController  implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         if ( null != tvInvestment )
         {
-            TreeItem rootItem = new TreeItem("User");
+            TreeItem rootItem = new TreeItem("Przemek");
             ArrayList<Wallet> wallets = App.getInvestRepo().getWallets();
             
             wallets.forEach(
-                    wallet -> { 
-                        rootItem.getChildren().add(new TreeItem(wallet.getName()));
-                                }
+                    wallet -> { populateWallet( rootItem, wallet ); }
             );
             tvInvestment.setRoot(rootItem);
         }          

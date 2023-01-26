@@ -16,12 +16,14 @@ public class InvestmentRepository {
     private AssetRepository Assets;
     
     private void initAll() {
+        Wallet cashPillow = new Wallet("Poduszka");        
         Asset cash = new Asset(Asset.TYPE.CASH, "PLN", null, "Gotówka");
         this.Assets.addNewAsset(cash);
+        cashPillow.addAsset(cash);
         Wallets.add(new Wallet("Akcje"));
         Wallets.add(new Wallet("Fundusze"));
         Wallets.add(new Wallet("Obligacje"));
-        Wallets.add(new Wallet("Gotówka"));
+        Wallets.add(cashPillow);
     }
 
     public InvestmentRepository() {

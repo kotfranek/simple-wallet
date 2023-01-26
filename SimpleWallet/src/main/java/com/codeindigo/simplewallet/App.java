@@ -1,15 +1,14 @@
 package com.codeindigo.simplewallet;
 
 import com.codeindigo.simplewallet.model.InvestmentRepository;
+import com.codeindigo.simplewallet.model.dataimport.OperationImport;
+import com.codeindigo.simplewallet.ui.IWindowManager;
 import com.codeindigo.simplewallet.ui.WindowManager;
+import java.io.File;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import javafx.stage.StageStyle;
 
 /**
  * JavaFX App
@@ -21,6 +20,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        OperationImport importer = new OperationImport();
+        importer.loadFromFile(OperationImport.SOURCE.EMAKLER, new File("C:\\Users\\ppodw\\OneDrive\\Documents\\NetBeansProjects\\simple-wallet\\SimpleWallet\\inputs\\emakler-transakcje.csv"));
         s_Investment = new InvestmentRepository();
         
         s_winMgr = new WindowManager(stage);
@@ -29,6 +30,10 @@ public class App extends Application {
     
     public static InvestmentRepository getInvestRepo() {
         return s_Investment;
+    }
+    
+    public static IWindowManager getWndM() {
+        return s_winMgr;
     }
     
     public static void showAbout()

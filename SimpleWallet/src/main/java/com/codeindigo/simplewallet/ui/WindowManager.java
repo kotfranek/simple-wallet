@@ -11,15 +11,11 @@ import javafx.stage.Stage;
  *
  * @author ppodw
  */
-public class WindowManager {
+public class WindowManager implements IWindowManager {
     
     private Stage m_rootStage;
     private HashMap<WINDOW, SceneWindow> m_windows;
-    
-    public enum WINDOW {
-        MAIN, ABOUT, PREFERENCES
-    }
-    
+        
     public WindowManager( Stage rootStage )
     {
         m_rootStage = rootStage;
@@ -27,12 +23,13 @@ public class WindowManager {
         
         loadStages();
     }
-    
+      
     private void loadStages()
     {
         m_windows.put(WINDOW.MAIN, new SceneWindow("MainWindow", "SimpleWallet", m_rootStage));
         m_windows.put(WINDOW.ABOUT, new SceneWindow( "AboutDialog", "About", false, true));
         m_windows.put(WINDOW.PREFERENCES, new SceneWindow( "PreferencesDialog", "Preferences", false, true));
+        m_windows.put(WINDOW.IMPORT, new SceneWindow( "ImportDialog", "Import Data", false, true));
     }
     
     private SceneWindow getScene( WINDOW scene )
@@ -40,12 +37,28 @@ public class WindowManager {
         return m_windows.get(scene);
     }    
     
-    public void show( WINDOW scene )
-    {
+    @Override
+    public Stage getStage(WINDOW scene) {
+        return m_windows.get(scene).getStage();
+    }    
+    
+    @Override
+    public void show( WINDOW scene ) {
         SceneWindow window = getScene(scene);
         if (null != window)
         {
             window.show();
         }
-    }      
+    }
+
+    @Override
+    public void hide(WINDOW scene) {
+        SceneWindow window = getScene(scene);
+        if (null != window)
+        {
+            window.close();
+        }        
+    }
+
+    
 }

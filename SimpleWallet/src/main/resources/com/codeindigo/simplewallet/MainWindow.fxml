@@ -35,7 +35,7 @@
             <items>
               <MenuItem mnemonicParsing="false" text="Buy..." />
                   <MenuItem mnemonicParsing="false" text="Sell..." />
-                  <MenuItem mnemonicParsing="false" text="Import..." />
+                  <MenuItem mnemonicParsing="false" onAction="#showImportDialog" text="Import..." />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

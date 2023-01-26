@@ -9,14 +9,19 @@ package com.codeindigo.simplewallet.model;
  * @author ppodw
  */
 public class Asset implements IAsset {    
-    private IAsset.TYPE Type;
-    private String Currency;
-    private String Ticker;
-    private String Name;
+    private final IAsset.TYPE Type;
+    private final String Currency;
+    private final String Ticker;
+    private final String Name;
 
     @Override
     public String getCurrency() {
         return Currency;
+    }
+    
+    @Override
+    public String getName() {
+        return Name;
     }
 
     @Override

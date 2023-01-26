@@ -19,7 +19,7 @@ import javafx.stage.StageStyle;
  */
 public class SceneWindow {
     private Stage m_stage;
-    
+   
     private void initWindow( String fXml, String name, boolean modal, boolean dialog ) {
         if ( null != m_stage ) {
             try {
@@ -64,6 +64,10 @@ public class SceneWindow {
             m_stage.close();
         }
     }
+    
+    public Stage getStage() {
+        return m_stage;
+    }    
     
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
